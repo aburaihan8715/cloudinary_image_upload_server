@@ -1,1 +1,1 @@
-# crud_with_upload_image_server
+# cloudinary_image_upload_server

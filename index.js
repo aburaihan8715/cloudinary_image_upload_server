@@ -26,7 +26,9 @@ app.post("/api/users/create", upload.single("image"), async (req, res) => {
   const { name, email } = req.body;
   // FIXME: only handle image cause it is optional field
   const imgFile = req.file;
+
   if (!imgFile) throw new Error("Image file is required!");
+
   if (imgFile.size > 1024 * 1024 * 2) throw new Error("Image file is too large.It must be less than 2 MB!");
 
   if (!imgFile.mimetype.startsWith("image/")) throw new Error("Only image files are allowed!");
@@ -45,6 +47,7 @@ app.post("/api/users/create", upload.single("image"), async (req, res) => {
     throw new Error(error.message);
   }
 });
+
 // get all user
 app.get("/api/users", async (req, res) => {
   try {
@@ -55,6 +58,7 @@ app.get("/api/users", async (req, res) => {
     throw new Error(error.message);
   }
 });
+
 // get specific user
 app.get("/api/users/:id", async (req, res) => {
   try {
@@ -64,6 +68,7 @@ app.get("/api/users/:id", async (req, res) => {
     throw new Error(error.message);
   }
 });
+
 // update specific user
 app.patch("/api/users/:id", async (req, res) => {
   try {
@@ -73,6 +78,7 @@ app.patch("/api/users/:id", async (req, res) => {
     throw new Error(error.message);
   }
 });
+
 // delete specific user
 app.delete("/api/users/:id", async (req, res) => {
   try {
